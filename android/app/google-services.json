@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "700600591172",
+    "project_id": "fast-aid-2392c",
+    "storage_bucket": "fast-aid-2392c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700600591172:android:0737547b650bf01be9ed11",
+        "android_client_info": {
+          "package_name": "com.shreyamsaha.fast_aid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700600591172-20dgq2h7qgg8t45gj8ulnah2lkbenuv8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shreyamsaha.fast_aid",
+            "certificate_hash": "09b82aa4b627b3ea2f02dc9e3fde41d8e2747533"
+          }
+        },
+        {
+          "client_id": "700600591172-712pfa5f04shd5g319k4t95na274f29m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcC_2P2O4fWM1xaxr9bwMMVdmOUXbzKIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700600591172-712pfa5f04shd5g319k4t95na274f29m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
