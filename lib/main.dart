@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fast_aid/constants/TextStyle-Constants.dart';
+import 'constants/Color-Constants.dart';
 
 void main() {
   runApp(MyApp());
