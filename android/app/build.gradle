@@ -37,6 +37,7 @@ android {
         applicationId "com.shreyamsaha.fast_aid"
         minSdkVersion 16
         targetSdkVersion 30
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -49,11 +50,13 @@ android {
         }
     }
 }
-
+apply plugin: 'com.google.gms.google-services'
 flutter {
     source '../..'
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation platform('com.google.firebase:firebase-bom:27.0.0')
+
 }
