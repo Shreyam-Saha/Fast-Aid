@@ -1,8 +1,14 @@
+import 'dart:async';
+
+import 'package:fast_aid/utils/authentication/google-sign-in.dart';
 import 'package:fast_aid/constants/Color-Constants.dart';
 import 'package:fast_aid/constants/Style-Constants.dart';
+import 'package:fast_aid/pages/Home-Page.dart';
 import 'package:fast_aid/pages/Login-Page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -10,8 +16,28 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  StreamSubscription<User> loginStateSubscription;
+  @override
+  void initState() {
+    var googleAuth = Provider.of<GoogleAuth>(context, listen: false);
+    loginStateSubscription = googleAuth.currentUser.listen((fbUser) {
+      if (fbUser != null) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    loginStateSubscription.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final googleAuth = Provider.of<GoogleAuth>(context);
     return Scaffold(
         body: SafeArea(
       child: Container(
@@ -95,7 +121,8 @@ class _LandingPageState extends State<LandingPage> {
                   color: kAmaranthRed,
                 ),
                 onPressed: () {
-                  print('Button Pressed');
+                  //print('Button Pressed');
+                  googleAuth.signInWithGoogle();
                 },
                 label:
                     Text('Sign Up using Google', style: kGoogleButtonTextStyle),
