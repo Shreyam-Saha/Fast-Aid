@@ -1,7 +1,5 @@
-import 'package:fast_aid/pages/Login-Page.dart';
+import 'package:fast_aid/pages/Landing-Page.dart';
 import 'package:flutter/material.dart';
-import 'package:fast_aid/constants/TextStyle-Constants.dart';
-import 'constants/Color-Constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: LandingPage(),
     );
   }
 }
