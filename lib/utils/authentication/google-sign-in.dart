@@ -28,8 +28,8 @@ class GoogleAuth {
   }
 
   void signOutWithGoogle() async {
+    FirebaseAuth.instance.signOut();
     await googleSignIn.disconnect();
     isSignedIn = false;
-    FirebaseAuth.instance.signOut();
   }
 }
