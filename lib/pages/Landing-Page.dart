@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:fast_aid/utils/authentication/google-sign-in.dart';
 import 'package:fast_aid/constants/Color-Constants.dart';
 import 'package:fast_aid/constants/Style-Constants.dart';
@@ -73,14 +72,14 @@ class _LandingPageState extends State<LandingPage> {
                         MaterialPageRoute(builder: (context) => LoginPage()));
                   },
                   child: Text(
-                    'Login using Email',
+                    'Login using Phone',
                     style: kButtonTextStyle,
                   ),
                 ),
                 ElevatedButton(
                   style: kButtonStyle,
                   onPressed: null,
-                  child: Text('Signup using Email', style: kButtonTextStyle),
+                  child: Text('Signup using Phone', style: kButtonTextStyle),
                 ),
               ],
             ),

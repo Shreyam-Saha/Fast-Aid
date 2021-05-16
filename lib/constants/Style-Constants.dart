@@ -26,3 +26,18 @@ TextStyle kButtonTextStyle =
 
 TextStyle kGoogleButtonTextStyle =
     TextStyle(color: kAmaranthRed, fontWeight: FontWeight.bold);
+
+TextStyle kFormLabelTextStyle =
+    TextStyle(color: kAmaranthRed, fontSize: 20.0, fontWeight: FontWeight.bold);
+
+TextStyle kFormInputTextStyle =
+    TextStyle(color: kManatee, fontSize: 20.0, fontWeight: FontWeight.bold);
+
+// Add all Border Style here
+InputBorder kFormBorderStyle = OutlineInputBorder(
+  borderSide: BorderSide(
+    color: kAmaranthRed,
+    width: 2.0,
+  ),
+  borderRadius: BorderRadius.circular(10.0),
+);

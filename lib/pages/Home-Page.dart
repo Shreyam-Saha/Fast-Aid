@@ -42,7 +42,9 @@ class _HomePageState extends State<HomePage> {
           children: [
             Text('Display Name : ${currentUser.displayName}'),
             CircleAvatar(
-              backgroundImage: NetworkImage(currentUser.photoURL),
+              backgroundImage: (currentUser.photoURL != null)
+                  ? NetworkImage(currentUser.photoURL)
+                  : AssetImage('./assets/images/fallback-avatar.jpg'),
               radius: 50.0,
             ),
             ElevatedButton(
