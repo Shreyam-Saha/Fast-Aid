@@ -6,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'Landing-Page.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -50,6 +52,8 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
                 onPressed: () {
                   googleAuth.signOutWithGoogle();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LandingPage()));
                 },
                 child: Text('Sign Out')),
           ],
