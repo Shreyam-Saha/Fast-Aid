@@ -1,9 +1,9 @@
 import 'dart:async';
+import 'package:fast_aid/pages/OnBoarding-Page.dart';
 import 'package:fast_aid/utils/authentication/google-sign-in.dart';
 import 'package:fast_aid/constants/Color-Constants.dart';
 import 'package:fast_aid/constants/Style-Constants.dart';
 import 'package:fast_aid/pages/Home-Page.dart';
-import 'package:fast_aid/pages/Login-Page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,7 +22,7 @@ class _LandingPageState extends State<LandingPage> {
     loginStateSubscription = googleAuth.currentUser.listen((fbUser) {
       if (fbUser != null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+            context, MaterialPageRoute(builder: (context) => OnBoardingPage()));
       }
     });
     super.initState();
@@ -62,56 +62,8 @@ class _LandingPageState extends State<LandingPage> {
             SizedBox(
               height: 30.0,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                ElevatedButton(
-                  style: kButtonStyle,
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginPage()));
-                  },
-                  child: Text(
-                    'Login using Phone',
-                    style: kButtonTextStyle,
-                  ),
-                ),
-                ElevatedButton(
-                  style: kButtonStyle,
-                  onPressed: null,
-                  child: Text('Signup using Phone', style: kButtonTextStyle),
-                ),
-              ],
-            ),
             SizedBox(
               height: 30.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  height: 1.0,
-                  width: 30.0,
-                  color: kManatee,
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  child: Text(
-                    'or',
-                    style: TextStyle(
-                      color: kManatee,
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 1.0,
-                  width: 30.0,
-                  color: kManatee,
-                )
-              ],
-            ),
-            SizedBox(
-              height: 20.0,
             ),
             ElevatedButton.icon(
                 icon: FaIcon(
