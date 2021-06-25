@@ -1,7 +1,6 @@
-import 'package:fast_aid/pages/OnBoarding-Page.dart';
-import 'package:fast_aid/utils/authentication/google-sign-in.dart';
-import 'package:fast_aid/pages/Home-Page.dart';
 import 'package:fast_aid/pages/Landing-Page.dart';
+import 'package:fast_aid/pages/Sign-Up-Page.dart';
+import 'package:fast_aid/utils/authentication/google-sign-in.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Roboto',
           primarySwatch: Colors.blue,
         ),
-        home: GoogleAuth().isSignedIn ? HomePage() : LandingPage(),
+        home: GoogleAuth().isSignedIn ? LandingPage() : SignUpPage(),
       ),
     );
   }
