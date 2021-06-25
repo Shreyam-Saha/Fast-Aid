@@ -1,12 +1,7 @@
 import 'dart:async';
-
-import 'package:fast_aid/utils/authentication/google-sign-in.dart';
 import 'package:fast_aid/constants/Color-Constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import 'Landing-Page.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,50 +9,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  StreamSubscription<User> loginStateSubscription;
-  @override
-  void initState() {
-    var googleAuth = Provider.of<GoogleAuth>(context, listen: false);
-    loginStateSubscription = googleAuth.currentUser.listen((fbUser) {
-      if (fbUser == null) {
-        Navigator.pop(context);
-      }
-    });
-    super.initState();
-  }
+  Completer<GoogleMapController> _controller = Completer();
+  GoogleMapController mapController;
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
 
-  @override
-  void dispose() {
-    loginStateSubscription.cancel();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final googleAuth = Provider.of<GoogleAuth>(context);
-    final currentUser = FirebaseAuth.instance.currentUser;
     return Scaffold(
-      backgroundColor: kAmaranthRed,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Display Name : ${currentUser.displayName}'),
-            CircleAvatar(
-              backgroundImage: (currentUser.photoURL != null)
-                  ? NetworkImage(currentUser.photoURL)
-                  : AssetImage('./assets/images/fallback-avatar.jpg'),
-              radius: 50.0,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  googleAuth.signOutWithGoogle();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LandingPage()));
-                },
-                child: Text('Sign Out')),
-          ],
-        ),
+      body: Stack(
+        children: <Widget>[
+          GoogleMap(
+            zoomControlsEnabled: false,
+            initialCameraPosition: _kGooglePlex,
+            mapType: MapType.normal,
+            myLocationButtonEnabled: true,
+            myLocationEnabled: true,
+            onMapCreated: (GoogleMapController controller) {
+              _controller.complete(controller);
+              mapController = controller;
+            },
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: kImperialRed,
+        mini: true,
+        onPressed: null,
+        child: Icon(Icons.my_location),
       ),
     );
   }

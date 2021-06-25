@@ -1,4 +1,5 @@
 import 'package:fast_aid/pages/Home-Page.dart';
+import 'package:fast_aid/pages/Landing-Page.dart';
 import 'package:flutter/material.dart';
 import 'package:sk_onboarding_screen/flutter_onboarding.dart';
 import 'package:sk_onboarding_screen/sk_onboarding_screen.dart';
@@ -41,13 +42,13 @@ class _OnBoardingPageState extends State<OnBoardingPage>
           themeColor: Color(0xFFEF233C),
           pages: pages,
           skipClicked: (value) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => LandingPage()));
           },
           getStartedClicked: (value) {
             print(value);
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => LandingPage()));
           }),
     );
   }

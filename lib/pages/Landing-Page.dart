@@ -1,86 +1,81 @@
-import 'dart:async';
-import 'package:fast_aid/pages/OnBoarding-Page.dart';
-import 'package:fast_aid/utils/authentication/google-sign-in.dart';
 import 'package:fast_aid/constants/Color-Constants.dart';
-import 'package:fast_aid/constants/Style-Constants.dart';
-import 'package:fast_aid/pages/Home-Page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fast_aid/pages/Profile-Page.dart';
+import 'package:fast_aid/pages/Ride-History.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'Home-Page.dart';
 
-class LandingPage extends StatefulWidget {
-  @override
-  _LandingPageState createState() => _LandingPageState();
-}
-
-class _LandingPageState extends State<LandingPage> {
-  StreamSubscription<User> loginStateSubscription;
-  @override
-  void initState() {
-    var googleAuth = Provider.of<GoogleAuth>(context, listen: false);
-    loginStateSubscription = googleAuth.currentUser.listen((fbUser) {
-      if (fbUser != null) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => OnBoardingPage()));
-      }
-    });
-    super.initState();
+class LandingPage extends StatelessWidget {
+  PersistentTabController _bottomNavBarController =
+      PersistentTabController(initialIndex: 0);
+  List<Widget> _buildScreens() {
+    return [HomePage(), RideHistoryPage(), ProfilePage()];
   }
 
-  @override
-  void dispose() {
-    loginStateSubscription.cancel();
-    super.dispose();
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: FaIcon(
+          FontAwesomeIcons.home,
+          size: 20.0,
+        ),
+        title: ("Home"),
+        activeColorPrimary: kImperialRed,
+        inactiveColorPrimary: kManatee,
+      ),
+      PersistentBottomNavBarItem(
+        icon: FaIcon(
+          FontAwesomeIcons.history,
+          size: 20.0,
+        ),
+        title: ("History"),
+        activeColorPrimary: kImperialRed,
+        inactiveColorPrimary: kManatee,
+      ),
+      PersistentBottomNavBarItem(
+        icon: FaIcon(
+          FontAwesomeIcons.user,
+          size: 20.0,
+        ),
+        title: ("Profile"),
+        activeColorPrimary: kImperialRed,
+        inactiveColorPrimary: kManatee,
+      ),
+    ];
   }
 
   @override
   Widget build(BuildContext context) {
-    final googleAuth = Provider.of<GoogleAuth>(context);
-    return Scaffold(
-        body: SafeArea(
-      child: Container(
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              child: Image(
-                image: AssetImage('assets/images/landing-page-image.jpg'),
-              ),
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            Text(
-              'Welcome to Fast Aid',
-              style: TextStyle(
-                  color: kAmaranthRed,
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            ElevatedButton.icon(
-                icon: FaIcon(
-                  FontAwesomeIcons.google,
-                  size: 15.0,
-                  color: kAmaranthRed,
-                ),
-                onPressed: () {
-                  //print('Button Pressed');
-                  googleAuth.signInWithGoogle();
-                },
-                label:
-                    Text('Sign Up using Google', style: kGoogleButtonTextStyle),
-                style: kGoogleSignUpButtonStyle),
-          ],
+    return PersistentTabView(context,
+        controller: _bottomNavBarController,
+        items: _navBarsItems(),
+        screens: _buildScreens(),
+        confineInSafeArea: true,
+        backgroundColor: kAliceBlue, // Default is Colors.white.
+        handleAndroidBackButtonPress: true, // Default is true.
+        resizeToAvoidBottomInset:
+            true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+        stateManagement: true, // Default is true.
+        hideNavigationBarWhenKeyboardShows:
+            true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+        decoration: NavBarDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          colorBehindNavBar: kAliceBlue,
         ),
-      ),
-    ));
+        popAllScreensOnTapOfSelectedTab: true,
+        popActionScreens: PopActionScreensType.all,
+        itemAnimationProperties: ItemAnimationProperties(
+          // Navigation Bar's items animation properties.
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
+        screenTransitionAnimation: ScreenTransitionAnimation(
+          // Screen transition animation on change of selected tab.
+          animateTabTransition: true,
+          curve: Curves.ease,
+          duration: Duration(milliseconds: 200),
+        ),
+        navBarStyle: NavBarStyle.style1);
   }
 }
