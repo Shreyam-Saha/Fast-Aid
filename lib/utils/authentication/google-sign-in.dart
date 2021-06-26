@@ -5,6 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class GoogleAuth {
   final googleSignIn = GoogleSignIn();
   bool isSignedIn = false;
+  bool isNewUser = false;
 
   Stream<User> get currentUser => FirebaseAuth.instance.authStateChanges();
 
@@ -24,6 +25,9 @@ class GoogleAuth {
     isSignedIn = true;
     // Once signed in, return the UserCredential
     final result = await FirebaseAuth.instance.signInWithCredential(credential);
+    if (result.additionalUserInfo.isNewUser) {
+      isNewUser = true;
+    }
     return result;
   }
 
