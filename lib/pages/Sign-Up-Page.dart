@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:fast_aid/pages/Home-Page.dart';
 import 'package:fast_aid/pages/OnBoarding-Page.dart';
 import 'package:fast_aid/utils/authentication/google-sign-in.dart';
 import 'package:fast_aid/constants/Color-Constants.dart';
@@ -19,9 +20,12 @@ class _SignUpPageState extends State<SignUpPage> {
   void initState() {
     var googleAuth = Provider.of<GoogleAuth>(context, listen: false);
     loginStateSubscription = googleAuth.currentUser.listen((fbUser) {
-      if (fbUser != null) {
+      if (fbUser != null && !googleAuth.isNewUser) {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => OnBoardingPage()));
+      } else if (fbUser != null && googleAuth.isNewUser) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
       }
     });
     super.initState();
@@ -71,7 +75,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   color: kAmaranthRed,
                 ),
                 onPressed: () {
-                  //print('Button Pressed');
                   googleAuth.signInWithGoogle();
                 },
                 label:

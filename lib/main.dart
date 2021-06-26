@@ -1,4 +1,4 @@
-import 'package:fast_aid/pages/Landing-Page.dart';
+import 'package:fast_aid/pages/Home-Page.dart';
 import 'package:fast_aid/pages/Sign-Up-Page.dart';
 import 'package:fast_aid/utils/authentication/google-sign-in.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,7 +24,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Roboto',
           primarySwatch: Colors.blue,
         ),
-        home: GoogleAuth().isSignedIn ? LandingPage() : SignUpPage(),
+        home: (GoogleAuth().isSignedIn && !GoogleAuth().isNewUser)
+            ? HomePage()
+            : SignUpPage(),
       ),
     );
   }

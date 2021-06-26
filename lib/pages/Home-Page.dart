@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:fast_aid/constants/Color-Constants.dart';
+import 'package:fast_aid/custom-widgets/Custom-Drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -18,6 +19,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CustomDrawer(),
       body: Stack(
         children: <Widget>[
           GoogleMap(

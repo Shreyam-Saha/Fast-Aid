@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:fast_aid/custom-widgets/Custom-Drawer.dart';
 import 'package:fast_aid/utils/authentication/google-sign-in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
     final googleAuth = Provider.of<GoogleAuth>(context);
     final currentUser = FirebaseAuth.instance.currentUser;
     return Scaffold(
-      bottomNavigationBar: null,
+      drawer: CustomDrawer(),
       backgroundColor: Colors.white,
       body: Center(
         child: Column(
