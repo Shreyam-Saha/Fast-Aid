@@ -10,7 +10,17 @@ ButtonStyle kButtonStyle = ButtonStyle(
     RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
   ),
 );
-
+ButtonStyle kDrawerButtonStyle = ButtonStyle(
+  shape: MaterialStateProperty.all(CircleBorder()),
+  padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+  backgroundColor: MaterialStateProperty.all(kImperialRed), // <-- Button color
+  overlayColor: MaterialStateProperty.resolveWith<Color>((states) {
+    if (states.contains(MaterialState.pressed))
+      return Colors.red.shade200;
+    else
+      return Colors.red.shade200; // <-- Splash color
+  }),
+);
 ButtonStyle kGoogleSignUpButtonStyle = ButtonStyle(
   padding: MaterialStateProperty.all(EdgeInsets.all(15)),
   backgroundColor: MaterialStateProperty.all(Colors.white),
