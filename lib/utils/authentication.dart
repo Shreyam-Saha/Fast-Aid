@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleAuth {
@@ -24,8 +26,22 @@ class GoogleAuth {
     );
     isSignedIn = true;
     // Once signed in, return the UserCredential
-    final result = await FirebaseAuth.instance.signInWithCredential(credential);
-    if (result.additionalUserInfo.isNewUser) {
+    final result = await FirebaseAuth.instance
+        .signInWithCredential(credential)
+        .catchError((error) {
+      PlatformException authException = error;
+      print(authException.message);
+    });
+    if (result.user != null) {
+      DatabaseReference userDatabaseRef = FirebaseDatabase.instance
+          .reference()
+          .child("users/${result.user.uid}/");
+      Map userDataMap = {
+        'User Name': result.user.displayName,
+        'Email': result.user.email,
+        'User ID': result.user.uid,
+      };
+      userDatabaseRef.set(userDataMap);
       isNewUser = true;
     }
     return result;
