@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:fast_aid/pages/Home-Page.dart';
 import 'package:fast_aid/pages/OnBoarding-Page.dart';
-import 'package:fast_aid/utils/authentication/google-sign-in.dart';
+import 'package:fast_aid/utils/authentication.dart';
 import 'package:fast_aid/constants/Color-Constants.dart';
 import 'package:fast_aid/constants/Style-Constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';

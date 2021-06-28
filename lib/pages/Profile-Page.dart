@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:fast_aid/constants/Style-Constants.dart';
 import 'package:fast_aid/custom-widgets/Custom-Drawer.dart';
-import 'package:fast_aid/utils/authentication/google-sign-in.dart';
+import 'package:fast_aid/utils/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -4,7 +4,7 @@ import 'package:fast_aid/constants/Color-Constants.dart';
 import 'package:fast_aid/pages/Home-Page.dart';
 import 'package:fast_aid/pages/Profile-Page.dart';
 import 'package:fast_aid/pages/Ride-History.dart';
-import 'package:fast_aid/utils/authentication/google-sign-in.dart';
+import 'package:fast_aid/utils/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
