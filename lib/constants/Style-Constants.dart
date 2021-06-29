@@ -69,3 +69,17 @@ InputBorder kFormBorderStyle = OutlineInputBorder(
   ),
   borderRadius: BorderRadius.circular(10.0),
 );
+
+//Container Decorations
+
+BoxDecoration kRideHistoryItemBoxDec = BoxDecoration(
+    color: Colors.white,
+    borderRadius: BorderRadius.circular(8),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.8),
+        spreadRadius: 2,
+        blurRadius: 5,
+        offset: Offset(0, 7), // changes position of shadow
+      ),
+    ]);
