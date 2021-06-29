@@ -65,8 +65,7 @@ class _HomePageState extends State<HomePage> {
       Marker thisMarker = Marker(
           markerId: MarkerId('driver${driver.key}'),
           position: driverPos,
-          icon: BitmapDescriptor.defaultMarkerWithHue(
-              BitmapDescriptor.hueMagenta),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
           rotation: 0);
       nearByDriverMarkers.add(thisMarker);
       setState(() {
