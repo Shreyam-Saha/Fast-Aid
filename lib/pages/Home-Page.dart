@@ -119,22 +119,16 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(8.0)),
                     ),
                   ),
-                  onPressed: () {
-                    // goOnline(); //sets a driver to available along with the vehicle location
-                    // getDriverLocationUpdates(); //updates the location in realtime
-                    // showModalBottomSheet(
-                    //     isDismissible: false,
-                    //     context: context,
-
-                    //   );
-                    showModalBottomSheet(
-                        isDismissible: true,
-                        context: context,
-                        builder: (BuildContext context) => CustomDialog(
-                              title: 'Request an Ambulance',
-                              subTitle:
-                                  'You are about to initiate a emergency request. Are you sure ?',
-                            ));
+                  onPressed: () async {
+                    await showModalBottomSheet(
+                      isDismissible: true,
+                      context: context,
+                      builder: (BuildContext context) => CustomDialog(
+                        title: 'Request an Ambulance',
+                        subTitle:
+                            'You are about to initiate a emergency request. Are you sure ?',
+                      ),
+                    );
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

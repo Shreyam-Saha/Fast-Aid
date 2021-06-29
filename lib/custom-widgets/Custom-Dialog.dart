@@ -23,12 +23,6 @@ class _CustomDialogState extends State<CustomDialog> {
   }
 
   @override
-  void initState() {
-    demoCircularIndicator();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return isLoading
         ? Container(
