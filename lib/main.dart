@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       create: (context) => GoogleAuth(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Fast Aid',
         theme: ThemeData(
           fontFamily: 'Roboto',
           primarySwatch: Colors.blue,

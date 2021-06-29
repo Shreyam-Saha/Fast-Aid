@@ -9,6 +9,13 @@ ButtonStyle kConfirmButtonStyle = ButtonStyle(
   ),
   backgroundColor: MaterialStateProperty.all<Color>(kImperialRed),
 );
+
+ButtonStyle kSignOutButtonStyle = ButtonStyle(
+    padding: MaterialStateProperty.all<EdgeInsets>(
+        EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
+    elevation: MaterialStateProperty.all<double>(5),
+    backgroundColor: MaterialStateProperty.all<Color>(kImperialRed));
+
 ButtonStyle kCancelButtonStyle = ButtonStyle(
   elevation: MaterialStateProperty.all<double>(5),
   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -16,6 +23,7 @@ ButtonStyle kCancelButtonStyle = ButtonStyle(
   ),
   backgroundColor: MaterialStateProperty.all<Color>(kManatee),
 );
+
 ButtonStyle kButtonStyle = ButtonStyle(
   elevation: MaterialStateProperty.all<double>(5.0),
   backgroundColor: MaterialStateProperty.all<Color>(kAmaranthRed),
