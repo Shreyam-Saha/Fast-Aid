@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:fast_aid/constants/Color-Constants.dart';
 import 'package:fast_aid/constants/Style-Constants.dart';
+import 'package:fast_aid/custom-widgets/Custom-Dialog.dart';
 import 'package:fast_aid/custom-widgets/Custom-Drawer.dart';
 import 'package:fast_aid/data-models/nearbyDrivers.dart';
 import 'package:fast_aid/data/nearbyDriverData.dart';
@@ -103,6 +104,46 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: Icon(Icons.menu),
                 style: kDrawerButtonStyle),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+                margin: EdgeInsets.fromLTRB(10, 0, 20, 12),
+                width: 220,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(kImperialRed),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0)),
+                    ),
+                  ),
+                  onPressed: () async {
+                    await showModalBottomSheet(
+                      isDismissible: true,
+                      context: context,
+                      builder: (BuildContext context) => CustomDialog(
+                        title: 'Request an Ambulance',
+                        subTitle:
+                            'You are about to initiate a emergency request. Are you sure ?',
+                      ),
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Request an Ambulance',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                )),
           ),
         ],
       ),
