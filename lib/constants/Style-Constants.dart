@@ -2,7 +2,20 @@ import 'package:flutter/material.dart';
 import 'Color-Constants.dart';
 
 // Add all Button Style here
-
+ButtonStyle kConfirmButtonStyle = ButtonStyle(
+  elevation: MaterialStateProperty.all<double>(5),
+  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+    RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+  ),
+  backgroundColor: MaterialStateProperty.all<Color>(kImperialRed),
+);
+ButtonStyle kCancelButtonStyle = ButtonStyle(
+  elevation: MaterialStateProperty.all<double>(5),
+  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+    RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+  ),
+  backgroundColor: MaterialStateProperty.all<Color>(kManatee),
+);
 ButtonStyle kButtonStyle = ButtonStyle(
   elevation: MaterialStateProperty.all<double>(5.0),
   backgroundColor: MaterialStateProperty.all<Color>(kAmaranthRed),
@@ -42,6 +55,11 @@ TextStyle kFormLabelTextStyle =
 
 TextStyle kFormInputTextStyle =
     TextStyle(color: kManatee, fontSize: 20.0, fontWeight: FontWeight.bold);
+TextStyle kDriverStatusModalButtonTextStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 15,
+    fontWeight: FontWeight.bold,
+    letterSpacing: 1);
 
 // Add all Border Style here
 InputBorder kFormBorderStyle = OutlineInputBorder(
